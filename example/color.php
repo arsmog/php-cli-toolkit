@@ -25,6 +25,12 @@ $text = [
         ->insertAttribute(TextColor::BLUE)
         ->insertAttribute(BackgroundColor::YELLOW)
         ->insertAttribute(TextAttribute::BLINK)
+        ->get(),
+    $app->set("It's italicized and strikethrough black text on a cyan background.")
+        ->insertAttribute(TextColor::BLACK)
+        ->insertAttribute(BackgroundColor::LIGHT_CYAN)
+        ->insertAttribute(TextAttribute::ITALIC)
+        ->insertAttribute(TextAttribute::STRIKETHROUGH)
         ->get()
 ];
 
