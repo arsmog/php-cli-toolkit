@@ -17,9 +17,9 @@ if (empty($params)) {
 }
 
 echo "Enter the variable name: ";
-$input->scanf("name");
+$input->scanf("variable_name");
 
 echo "Enter the variable value: ";
-$input->scanf($input->name);
+$input->scanf($input->variable_name);
 
-printf("STDIN:%s%s => %s%s", PHP_EOL, $input->name, $input->{$input->name}, PHP_EOL);
+printf("STDIN:%s%s => %s%s", PHP_EOL, $input->variable_name, $input->{$input->variable_name}, PHP_EOL);
