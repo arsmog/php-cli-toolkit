@@ -68,7 +68,7 @@ composer require arsmog/php-cli-toolkit
 
 require "vendor/autoload.php";
 
-uuse CliToolkit\View\{
+use CliToolkit\View\{
     Text,
     TextAttribute,
     TextColor,
@@ -110,7 +110,7 @@ echo implode(PHP_EOL, $text), PHP_EOL;
 
 require "vendor/autoload.php";
 
-se CliToolkit\IO\ConsoleInput;
+use CliToolkit\IO\ConsoleInput;
 
 $input = new ConsoleInput();
 $params = $input->argv();
