@@ -2,7 +2,7 @@
 
 include __DIR__ . "/../autoload.php";
 
-use CliToolkit\View\Grid;
+use CliToolkit\TextGrid\Grid;
 
 $data = [
     ['ID', 'Name', 'Age'],

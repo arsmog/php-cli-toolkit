@@ -1,6 +1,6 @@
 <?php
 
-namespace CliToolkit\View;
+namespace CliToolkit\TextGrid;
 
 class Grid
 {

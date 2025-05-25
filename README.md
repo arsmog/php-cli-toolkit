@@ -68,7 +68,7 @@ composer require arsmog/php-cli-toolkit
 
 require "vendor/autoload.php";
 
-use CliToolkit\View\{
+use CliToolkit\TextFormat\{
     Text,
     TextAttribute,
     TextColor,
@@ -125,12 +125,12 @@ if (empty($params)) {
 }
 
 echo "Enter the variable name: ";
-$input->scanf("variable_name");
+$input->scanf("var_name");
 
 echo "Enter the variable value: ";
-$input->scanf($input->variable_name);
+$input->scanf($input->var_name);
 
-printf("STDIN:%s%s => %s%s", PHP_EOL, $input->variable_name, $input->{$input->variable_name}, PHP_EOL);
+printf("STDIN:%s%s => %s%s", PHP_EOL, $input->var_name, $input->{$input->var_name}, PHP_EOL);
 ```
 
 
