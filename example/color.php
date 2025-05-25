@@ -2,7 +2,7 @@
 
 include __DIR__ . "/../autoload.php";
 
-use CliToolkit\View\{
+use CliToolkit\TextFormat\{
     Text,
     TextAttribute,
     TextColor,
