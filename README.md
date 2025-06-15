@@ -61,7 +61,92 @@ composer require arsmog/php-cli-toolkit
 
 ## Example Usage
 
-### Change the output color
+
+### Reading data from standard stream
+
+```php
+<?php
+
+require "vendor/autoload.php";
+
+use CliToolkit\IO\InputManager;
+
+$input = new InputManager();
+$params = $input->argv();
+
+if (empty($params)) {
+    echo "No arguments", PHP_EOL;
+} else {
+    echo "Arguments:", PHP_EOL;
+    foreach ($params as $name => $value) {
+        printf("%s => %s%s", $name, $value, PHP_EOL);
+    }
+}
+
+echo "Enter the variable name: ";
+$input->scanf("var_name");
+
+echo "Enter the variable value: ";
+$input->scanf($input->var_name);
+
+printf("STDIN:%s%s => %s%s", PHP_EOL, $input->var_name, $input->{$input->var_name}, PHP_EOL);
+```
+
+### Formatted text output using the output manager
+
+#### Example of implementation [More details](example/output_v2.php)
+```php
+<?php
+
+require "vendor/autoload.php";
+
+use CliToolkit\IO\{OutputManager, TextFormat};
+
+$fruits = [
+    "apple",
+    "banana",
+    "cherry"
+];
+
+$grid = new OutputManager();
+$attr = new TextFormat\DtoAttribute();
+$attr->color = TextFormat\TextColor::Green;
+$attr->textAttribute = TextFormat\TextAttribute::Italic;
+$grid->insert($fruits, $attr)->print();
+```
+
+#### Alternative example [More details](example/output_v2.php)
+```php
+<?php
+
+require "vendor/autoload.php";
+
+use CliToolkit\IO\{OutputManager, TextFormat};
+use CliToolkit\TextGrid;
+
+$birds = [
+    "sparrow" => [
+        "color"           => TextFormat\TextColor::White,
+        "backgroundColor" => TextFormat\BackgroundColor::Blue
+    ],
+    "eagle" => [
+        "color"           => TextFormat\TextColor::White,
+        "backgroundColor" => TextFormat\BackgroundColor::Black
+    ],
+    "parrot" => [
+        "color"           => TextFormat\TextColor::Red,
+        "backgroundColor" => TextFormat\BackgroundColor::Yellow
+    ]
+];
+
+$table = new OutputManager(new TextGrid\Table());
+foreach ($birds as $bird => $attributes) {
+    $table->insert($bird, TextFormat\DtoAttribute::fromArray($attributes));
+}
+$table->print();
+```
+
+### Alternative implementation of text formatting for output
 
 ```php
 <?php
@@ -101,36 +186,6 @@ $text = [
 ];
 
 echo implode(PHP_EOL, $text), PHP_EOL;
-```
-
-### Reading data from standard stream
-
-```php
-<?php
-
-require "vendor/autoload.php";
-
-use CliToolkit\IO\ConsoleInput;
-
-$input = new ConsoleInput();
-$params = $input->argv();
-
-if (empty($params)) {
-    echo "No arguments", PHP_EOL;
-} else {
-    echo "Arguments:", PHP_EOL;
-    foreach ($params as $name => $value) {
-        printf("%s => %s%s", $name, $value, PHP_EOL);
-    }
-}
-
-echo "Enter the variable name: ";
-$input->scanf("var_name");
-
-echo "Enter the variable value: ";
-$input->scanf($input->var_name);
-
-printf("STDIN:%s%s => %s%s", PHP_EOL, $input->var_name, $input->{$input->var_name}, PHP_EOL);
 ```
 
 
