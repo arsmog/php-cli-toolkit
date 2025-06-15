@@ -44,8 +44,8 @@ class Text
         $this->text = sprintf(
             "%s%s",
             $this->getAttribute($code),
-            $this->text)
-        ;
+            $this->text
+        );
         return $this;
     }
 

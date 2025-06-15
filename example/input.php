@@ -2,9 +2,9 @@
 
 include __DIR__ . "/../autoload.php";
 
-use CliToolkit\IO\ConsoleInput;
+use CliToolkit\IO\InputManager;
 
-$input = new ConsoleInput();
+$input = new InputManager();
 $params = $input->argv();
 
 if (empty($params)) {

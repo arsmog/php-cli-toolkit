@@ -6,7 +6,7 @@
 
 namespace CliToolkit\IO;
 
-class ConsoleInput implements IOInterface
+class InputManager implements IOInterface
 {
     /**
      * Data obtained by CliInput::scanf() method

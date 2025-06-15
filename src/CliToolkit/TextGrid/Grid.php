@@ -2,21 +2,21 @@
 
 namespace CliToolkit\TextGrid;
 
-class Grid
+class Grid implements GridInterface
 {
-    private const MARGIN_RIGHT = 4; // Distance between columns
+    protected const MARGIN_RIGHT = 8; // Distance between columns
 
     /**
      * Grid Row Array
      * @var array[array]
      */
-    private array $rows;
+    protected array $rows;
 
     /**
      * Array of column sizes
      * @var array
      */
-    private array $column_length;
+    protected array $column_length;
 
     public function __construct(?array $rows = null)
     {
@@ -32,7 +32,7 @@ class Grid
      * @param array|null $columns
      * @return \CliToolkit\View\Grid
      */
-    public function newRow(?array $columns = null): Grid
+    public function newRow(?array $columns = null): GridInterface
     {
         $this->rows[] = !empty($columns) ? array_map("strval", $columns) : [];
         return $this;
@@ -43,7 +43,7 @@ class Grid
      * @param string $column
      * @return \CliToolkit\View\Grid
      */
-    public function newColumn(string $column = ''): Grid
+    public function newColumn(string $column = ''): GridInterface
     {
         $this->rows[array_key_last($this->rows)][] = $column;
         return $this;
@@ -54,7 +54,7 @@ class Grid
      * @param array $rows
      * @return \CliToolkit\View\Grid
      */
-    public function setRows(array $rows): Grid
+    public function setRows(array $rows): GridInterface
     {
         $this->clear();
         foreach ($rows as $row) {
@@ -87,7 +87,7 @@ class Grid
      * Clears all lines
      * @return \CliToolkit\View\Grid
      */
-    public function clear(): Grid
+    public function clear(): GridInterface
     {
         $this->rows = [];
         return $this;
@@ -97,7 +97,7 @@ class Grid
      * Prints a grid
      * @return \CliToolkit\View\Grid
      */
-    public function print(): Grid
+    public function print(): GridInterface
     {
         $rows = $this->getRows();
         foreach ($rows as $row) {
@@ -110,7 +110,7 @@ class Grid
      * Sets an array with the length of the columns
      * @return void
      */
-    private function setColumnsLength(): void
+    protected function setColumnsLength(): void
     {
         $this->column_length = [];
         if (empty($this->rows)) {
@@ -119,7 +119,7 @@ class Grid
         $keys = array_keys($this->rows[0]);
         foreach ($keys as $key) {
             $this->column_length[$key] = max(
-                ...array_map(
+                array_map(
                     fn($column) => mb_strlen((string) $column),
                     array_column($this->rows, $key)
                 )
