@@ -51,12 +51,12 @@ class InputManager implements IOInterface
     }
 
     /**
-     * Reading data from the standard input stream into a property of the CliInput class
+     * Reading data from the standard input stream into a property of the InputManager class
      * @param string $var variable name
      * @throws \Exception
-     * @return CliToolkit\IO\CliInput
+     * @return CliToolkit\IO\InputManager
      */
-    public function scanf(string $var): ConsoleInput
+    public function scanf(string $var): InputManager
     {
         $name = preg_replace("/[^a-zA-Z_]/u", '', $var);
         if (empty($name)) {
