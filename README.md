@@ -115,7 +115,7 @@ $attr->textAttribute = TextFormat\TextAttribute::Italic;
 $grid->insert($fruits, $attr)->print();
 ```
 
-![Example of text output in green grid format with italic font](https://github.com/arsmog/php-cli-toolkit/tree/master/example/images/output_fruits.webp)
+![Example of text output in green grid format with italic font](https://raw.githubusercontent.com/arsmog/php-cli-toolkit/refs/heads/master/example/images/output_fruits.webp)
 
 
 #### Alternative example [More details](example/output_v2.php)
@@ -149,7 +149,7 @@ foreach ($birds as $bird => $attributes) {
 $table->print();
 ```
 
-![Example of text output in table format with different text and background colors](https://github.com/arsmog/php-cli-toolkit/tree/master/example/images/output_birds.webp)
+![Example of text output in table format with different text and background colors](https://raw.githubusercontent.com/arsmog/php-cli-toolkit/refs/heads/master/example/images/output_birds.webp)
 
 
 ### Alternative implementation of text formatting for output
@@ -194,7 +194,7 @@ $text = [
 echo implode(PHP_EOL, $text), PHP_EOL;
 ```
 
-![Example of text output with different text and background colors](https://github.com/arsmog/php-cli-toolkit/tree/master/example/images/color.webp)
+![Example of text output with different text and background colors](https://raw.githubusercontent.com/arsmog/php-cli-toolkit/refs/heads/master/example/images/color.webp)
 
 
 ## Contribution
