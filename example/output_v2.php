@@ -108,3 +108,5 @@ foreach ($birds as $bird => $attributes) {
     $table->insert($bird, TextFormat\DtoAttribute::fromArray($attributes));
 }
 $table->print();
+
+echo str_repeat(PHP_EOL, 2);
