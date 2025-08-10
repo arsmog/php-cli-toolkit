@@ -100,7 +100,7 @@ printf("STDIN:%s%s => %s%s", PHP_EOL, $input->var_name, $input->{$input->var_nam
 
 require "vendor/autoload.php";
 
-use CliToolkit\IO\{OutputManager, TextFormat};
+use CliToolkit\IO\{OutputGrid, TextFormat};
 
 $fruits = [
     "apple",
@@ -108,7 +108,7 @@ $fruits = [
     "cherry"
 ];
 
-$grid = new OutputManager();
+$grid = new OutputGrid();
 $attr = new TextFormat\DtoAttribute();
 $attr->color = TextFormat\TextColor::Green;
 $attr->textAttribute = TextFormat\TextAttribute::Italic;
@@ -124,7 +124,7 @@ $grid->insert($fruits, $attr)->print();
 
 require "vendor/autoload.php";
 
-use CliToolkit\IO\{OutputManager, TextFormat};
+use CliToolkit\IO\{OutputGrid, TextFormat};
 use CliToolkit\TextGrid;
 
 $birds = [
@@ -142,7 +142,7 @@ $birds = [
     ]
 ];
 
-$table = new OutputManager(new TextGrid\Table());
+$table = new OutputGrid(new TextGrid\Table());
 foreach ($birds as $bird => $attributes) {
     $table->insert($bird, TextFormat\DtoAttribute::fromArray($attributes));
 }
