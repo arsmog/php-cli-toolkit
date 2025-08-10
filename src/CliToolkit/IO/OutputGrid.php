@@ -7,7 +7,7 @@ use CliToolkit\TextGrid\{
     Grid
 };
 
-class OutputManager implements IOInterface
+class OutputGrid implements IOInterface
 {
     private GridInterface $entity;
 
@@ -22,7 +22,7 @@ class OutputManager implements IOInterface
         $this->attributes = ["color", "backgroundColor", "textAttribute"];
     }
 
-    public function clearBuffer(): OutputManager
+    public function clearBuffer(): OutputGrid
     {
         $this->output->clear();
         return $this;
@@ -33,7 +33,7 @@ class OutputManager implements IOInterface
         return $this->entity;
     }
 
-    public function insert(array|string $data, ?TextFormat\DtoAttribute $attributes = null): OutputManager
+    public function insert(array|string $data, ?TextFormat\DtoAttribute $attributes = null): OutputGrid
     {
         if (!is_array($data)) {
             $data = [$data];
@@ -73,7 +73,7 @@ class OutputManager implements IOInterface
         return $rows;
     }
 
-    public function print(): OutputManager
+    public function print(): OutputGrid
     {
         $this->getEntity()->setRows($this->getRows())->print();
         return $this;

@@ -2,10 +2,10 @@
 
 include __DIR__ . "/../autoload.php";
 
-use CliToolkit\IO\OutputManager;
+use CliToolkit\IO\OutputGrid;
 use CliToolkit\TextGrid;
 
-$grid = new OutputManager(new TextGrid\Table());
+$grid = new OutputGrid(new TextGrid\Table());
 $grid->getEntity()
         ->newRow()
             ->newColumn('apple')

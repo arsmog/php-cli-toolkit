@@ -2,7 +2,7 @@
 
 include __DIR__ . "/../autoload.php";
 
-use CliToolkit\IO\{OutputManager, TextFormat};
+use CliToolkit\IO\{OutputGrid, TextFormat};
 use CliToolkit\TextGrid;
 
 $fruits = [
@@ -32,7 +32,7 @@ $fruits = [
     "zucchini"
 ];
 
-$grid = new OutputManager();
+$grid = new OutputGrid();
 $attr = new TextFormat\DtoAttribute();
 $attr->color = TextFormat\TextColor::Green;
 $attr->textAttribute = TextFormat\TextAttribute::Italic;
@@ -103,7 +103,7 @@ $birds = [
     ]
 ];
 
-$table = new OutputManager(new TextGrid\Table());
+$table = new OutputGrid(new TextGrid\Table());
 foreach ($birds as $bird => $attributes) {
     $table->insert($bird, TextFormat\DtoAttribute::fromArray($attributes));
 }
